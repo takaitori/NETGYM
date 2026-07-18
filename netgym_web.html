@@ -680,47 +680,56 @@
                 <span class="text-xs uppercase font-extrabold tracking-widest text-brand-accent bg-brand-accent/10 px-4 py-1.5 rounded-full">KONTAK KAMI</span>
                 <h2 class="font-sporty text-2xl sm:text-3xl font-extrabold uppercase">SIAP MEMULAI <span class="text-brand-accent">HARI INI?</span></h2>
                 <p class="text-brand-muted text-sm leading-relaxed">
-                    Kunjungi cabang terdekat kami atau hubungi nomor pelayanan member untuk konsultasi program gratis. Kami siap menyambut Anda.
+                    Datang langsung atau hubungi nomor pelayanan member untuk konsultasi program gratis. Kami siap menyambut Anda.
                 </p>
                 <div class="space-y-4 text-xs">
                     <div class="flex items-start space-x-3">
                         <div class="text-brand-accent text-base mt-0.5"><i class="fa-solid fa-location-dot"></i></div>
                         <div>
-                            <p class="font-bold text-white text-sm">NETGYM Bali Headquarters</p>
-                            <p class="text-brand-muted mt-1">Jl. Sunset Road No. 88X, Kuta, Bali, Indonesia 80361</p>
+                            <p class="font-bold text-white text-sm">NETGYM Bali</p>
+                            <p class="text-brand-muted mt-1">Jl. Raya Denpasar - Gilimanuk Desa Tuwed Kec. Melaya - Jembrana - Bali</p>
                         </div>
                     </div>
                     <div class="flex items-start space-x-3">
                         <div class="text-brand-accent text-base mt-0.5"><i class="fa-solid fa-phone"></i></div>
                         <div>
                             <p class="font-bold text-white text-sm">Telepon & WhatsApp</p>
-                            <p class="text-brand-muted mt-1">+62 812-3456-7890 (Layanan 24/7)</p>
+                            <p class="text-brand-muted mt-1">+6281 353 900 199 (Layanan 24/7)</p>
                         </div>
                     </div>
                     <div class="flex items-start space-x-3">
                         <div class="text-brand-accent text-base mt-0.5"><i class="fa-solid fa-envelope"></i></div>
                         <div>
                             <p class="font-bold text-white text-sm">Surel Dukungan</p>
-                            <p class="text-brand-muted mt-1">support@netgymfitness.id</p>
+                            <p class="text-brand-muted mt-1">netgym99@gmail.com</p>
                         </div>
                     </div>
                 </div>
             </div>
 
             <!-- Sleek map mock framework -->
-            <div class="relative bg-brand-dark border border-white/10 rounded-3xl p-4 h-72 sm:h-80 overflow-hidden group">
-                <div class="absolute inset-0 opacity-50 bg-cover bg-center transition-transform duration-700 group-hover:scale-105" style="background-image: url('https://placehold.co/600x400/151c2c/ffffff?text=PETA+NETGYM+BALI+HQ');"></div>
-                <!-- Interactive styling overlay -->
-                <div class="absolute inset-0 bg-gradient-to-t from-brand-dark via-brand-dark/20 to-transparent flex flex-col justify-end p-6">
-                    <span class="inline-block bg-brand-accent text-brand-dark px-3 py-1 rounded-full text-[10px] font-extrabold uppercase w-max tracking-wider mb-2">Live Map</span>
-                    <h3 class="font-sporty text-lg font-extrabold uppercase text-white">LIHAT DI GOOGLE MAPS</h3>
-                    <p class="text-xs text-brand-muted mt-1">Dapatkan navigasi satu klik langsung ke lokasi parkir luas NETGYM.</p>
-                    <button onclick="handleNavigationAlert()" class="mt-4 bg-white hover:bg-neutral-100 text-brand-dark text-xs font-bold py-2.5 px-4 rounded-xl flex items-center justify-center space-x-2 transition-colors w-max">
-                        <i class="fa-solid fa-route"></i> <span>Mulai Navigasi</span>
-                    </button>
-                </div>
-            </div>
+<div class="relative bg-brand-dark border border-white/10 rounded-3xl p-4 h-72 sm:h-80 overflow-hidden group">
+    
+    <!-- PETA GOOGLE MAPS DISEMBAKAN DISINI -->
+    <div class="absolute inset-0 opacity-50 transition-transform duration-700 group-hover:scale-105 pointer-events-none group-hover:pointer-events-auto">
+        <!-- Ganti atribut src di bawah ini dengan URL dari kode embed Anda -->
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7670.891944387271!2d114.52719002725152!3d-8.319395346591904!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd161f495c297cb%3A0x99231e3659a95bfe!2sNET%20GYM%20and%20FITNESS%20CENTER!5e0!3m2!1sid!2sid!4v1784342910195!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+    </div>
+
+    <!-- Interactive styling overlay -->
+    <!-- Tambahkan class 'pointer-events-none' pada overlay agar pengguna bisa berinteraksi dengan peta di bawahnya, 
+         tetapi berikan 'pointer-events-auto' pada tombol/konten teks agar tetap bisa diklik -->
+    <div class="absolute inset-0 bg-gradient-to-t from-brand-dark via-brand-dark/20 to-transparent flex flex-col justify-end p-6 pointer-events-none">
+        <div class="pointer-events-auto flex flex-col justify-end h-full">
+            <span class="inline-block bg-brand-accent text-brand-dark px-3 py-1 rounded-full text-[10px] font-extrabold uppercase w-max tracking-wider mb-2">Live Map</span>
+            <h3 class="font-sporty text-lg font-extrabold uppercase text-white">LIHAT DI GOOGLE MAPS</h3>
+            <p class="text-xs text-brand-muted mt-1">Dapatkan navigasi satu klik langsung ke lokasi parkir luas NETGYM.</p>
+            <button onclick="handleNavigationAlert()" class="mt-4 bg-white hover:bg-neutral-100 text-brand-dark text-xs font-bold py-2.5 px-4 rounded-xl flex items-center justify-center space-x-2 transition-colors w-max">
+                <i class="fa-solid fa-route"></i> <span>Mulai Navigasi</span>
+            </button>
         </div>
+    </div>
+</div>
     </section>
 
     <!-- Toast Notification Box (Safer Alternative to alert()) -->
