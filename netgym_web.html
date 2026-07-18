@@ -1,0 +1,1170 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NETGYM & Fitness Center - Elevate Your Limits</title>
+    <!-- Google Fonts: Inter & Syne for sporty, modern aesthetic -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Tailwind Config for Custom Theme Integration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            dark: '#0B0F19',
+                            darkGray: '#151C2C',
+                            accent: '#ADFF2F', // Electric Lime
+                            accentHover: '#96E01F',
+                            muted: '#94A3B8'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        sporty: ['Syne', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom scrollbar for premium theme */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0B0F19;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #2E3A52;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #ADFF2F;
+        }
+        /* Custom glow effects */
+        .neon-glow {
+            box-shadow: 0 0 15px rgba(173, 255, 47, 0.2);
+        }
+        .neon-border:focus {
+            border-color: #ADFF2F;
+            box-shadow: 0 0 10px rgba(173, 255, 47, 0.3);
+        }
+    </style>
+</head>
+<body class="bg-brand-dark text-white font-sans overflow-x-hidden antialiased">
+
+    <!-- Navigation -->
+    <nav class="sticky top-0 z-50 bg-brand-dark/90 backdrop-blur-md border-b border-white/10 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo Frame -->
+                <div class="flex items-center space-x-3">
+                    <div class="relative w-12 h-12 rounded-full overflow-hidden border-2 border-brand-accent p-0.5 bg-black flex items-center justify-center">
+                        <img id="gymLogo" src="NETGYM LOGO.jpg" alt="NETGYM Logo" class="object-cover w-full h-full rounded-full" onerror="handleLogoError()">
+                    </div>
+                    <div>
+                        <span class="font-sporty text-xl tracking-wider font-extrabold text-white">NET<span class="text-brand-accent">GYM</span></span>
+                        <p class="text-[10px] text-brand-muted tracking-widest uppercase font-bold">Fitness Center</p>
+                    </div>
+                </div>
+
+                <!-- Desktop Navigation Menu -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#beranda" class="text-sm font-semibold tracking-wide uppercase hover:text-brand-accent transition-colors">Beranda</a>
+                    <a href="#fitur" class="text-sm font-semibold tracking-wide uppercase hover:text-brand-accent transition-colors">Keunggulan</a>
+                    <a href="#kalkulator" class="text-sm font-semibold tracking-wide uppercase hover:text-brand-accent transition-colors">Kalkulator Fisik</a>
+                    <a href="#paket" class="text-sm font-semibold tracking-wide uppercase hover:text-brand-accent transition-colors">Paket Membership</a>
+                    <a href="#ulasan" class="text-sm font-semibold tracking-wide uppercase hover:text-brand-accent transition-colors">Ulasan</a>
+                </div>
+
+                <!-- Action Button -->
+                <div class="hidden md:block">
+                    <a href="#paket" class="bg-brand-accent hover:bg-brand-accentHover text-brand-dark font-extrabold px-6 py-2.5 rounded-full text-xs uppercase tracking-wider transition-all duration-300 transform hover:scale-105 inline-block text-center shadow-lg shadow-brand-accent/25">
+                        Gabung Sekarang
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Toggle Button -->
+                <div class="md:hidden">
+                    <button id="mobileMenuBtn" class="text-white hover:text-brand-accent focus:outline-none transition-colors">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Menu Dropdown -->
+        <div id="mobileMenu" class="hidden md:hidden bg-brand-dark/95 border-b border-white/10 px-4 pt-2 pb-6 space-y-3 transition-all duration-300">
+            <a href="#beranda" class="block py-2 text-base font-semibold tracking-wide uppercase border-b border-white/5 hover:text-brand-accent transition-colors" onclick="toggleMobileMenu()">Beranda</a>
+            <a href="#fitur" class="block py-2 text-base font-semibold tracking-wide uppercase border-b border-white/5 hover:text-brand-accent transition-colors" onclick="toggleMobileMenu()">Keunggulan</a>
+            <a href="#kalkulator" class="block py-2 text-base font-semibold tracking-wide uppercase border-b border-white/5 hover:text-brand-accent transition-colors" onclick="toggleMobileMenu()">Kalkulator Fisik</a>
+            <a href="#paket" class="block py-2 text-base font-semibold tracking-wide uppercase border-b border-white/5 hover:text-brand-accent transition-colors" onclick="toggleMobileMenu()">Paket Membership</a>
+            <a href="#ulasan" class="block py-2 text-base font-semibold tracking-wide uppercase hover:text-brand-accent transition-colors" onclick="toggleMobileMenu()">Ulasan</a>
+            <div class="pt-4">
+                <a href="#paket" class="block w-full bg-brand-accent text-brand-dark text-center font-extrabold py-3 rounded-xl text-sm uppercase tracking-wider transition-colors" onclick="toggleMobileMenu()">
+                    Gabung Sekarang
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="beranda" class="relative min-h-[90vh] flex items-center justify-center py-20 px-4 sm:px-6 lg:px-8 bg-cover bg-center overflow-hidden" style="background-image: linear-gradient(to right, rgba(11, 15, 25, 0.95), rgba(11, 15, 25, 0.85)), url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&q=80&w=1920');">
+        <!-- Visual Accent Orbs -->
+        <div class="absolute top-1/4 left-10 w-72 h-72 bg-brand-accent/5 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute bottom-1/4 right-10 w-96 h-96 bg-brand-accent/10 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto w-full relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            <!-- Left Grid: Text Content -->
+            <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                <div class="inline-flex items-center space-x-2 bg-brand-accent/10 border border-brand-accent/25 px-4 py-1.5 rounded-full">
+                    <span class="w-2.5 h-2.5 rounded-full bg-brand-accent animate-ping"></span>
+                    <span class="text-xs uppercase font-extrabold tracking-wider text-brand-accent">PROMO SPESIAL NEW MEMBER 2026</span>
+                </div>
+                <h1 class="font-sporty text-4xl sm:text-5xl lg:text-7xl font-extrabold leading-tight tracking-tight">
+                    NO PAIN,<br>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-accent to-lime-300">NO LIMITS.</span>
+                </h1>
+                <p class="text-base sm:text-lg text-brand-muted max-w-xl mx-auto lg:mx-0 leading-relaxed">
+                    Sambut era baru kebugaran di <strong class="text-white">NETGYM</strong>. Dilengkapi dengan fasilitas modern premium, personal trainer tersertifikasi, dan program latihan cerdas terstruktur untuk transformasi maksimal tubuh Anda.
+                </p>
+                <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-4">
+                    <a href="#paket" class="w-full sm:w-auto bg-brand-accent hover:bg-brand-accentHover text-brand-dark font-extrabold px-8 py-4 rounded-xl text-sm uppercase tracking-wider transition-all duration-300 text-center shadow-lg shadow-brand-accent/30">
+                        <i class="fa-solid fa-fire mr-2"></i> Mulai Latihan
+                    </a>
+                    <a href="#kalkulator" class="w-full sm:w-auto bg-brand-darkGray hover:bg-neutral-800 border border-white/10 hover:border-brand-accent/50 text-white font-extrabold px-8 py-4 rounded-xl text-sm uppercase tracking-wider transition-all duration-300 text-center">
+                        <i class="fa-solid fa-calculator mr-2"></i> Cek Lemak & BMI
+                    </a>
+                </div>
+                <!-- Mini Stats Row -->
+                <div class="grid grid-cols-3 gap-4 pt-8 max-w-md mx-auto lg:mx-0 border-t border-white/10">
+                    <div>
+                        <p class="font-sporty text-2xl sm:text-3xl font-extrabold text-brand-accent">1500+</p>
+                        <p class="text-[11px] text-brand-muted uppercase font-bold tracking-wider">Member Aktif</p>
+                    </div>
+                    <div>
+                        <p class="font-sporty text-2xl sm:text-3xl font-extrabold text-brand-accent">15+</p>
+                        <p class="text-[11px] text-brand-muted uppercase font-bold tracking-wider">Trainer Ahli</p>
+                    </div>
+                    <div>
+                        <p class="font-sporty text-2xl sm:text-3xl font-extrabold text-brand-accent">99%</p>
+                        <p class="text-[11px] text-brand-muted uppercase font-bold tracking-wider">Tingkat Sukses</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Grid: Featured Visual Frame -->
+            <div class="lg:col-span-5 flex justify-center">
+                <div class="relative w-full max-w-md">
+                    <!-- Tech frame backdrops -->
+                    <div class="absolute inset-0 bg-brand-accent rounded-3xl rotate-3 opacity-20 blur-sm"></div>
+                    <div class="relative bg-brand-darkGray border border-white/10 rounded-3xl p-4 overflow-hidden shadow-2xl">
+                        <div class="relative h-96 rounded-2xl overflow-hidden bg-neutral-950 flex items-center justify-center">
+                            <img src="NETGYM LOGO.jpg" alt="NETGYM Showcase" class="object-cover w-full h-full scale-105 opacity-90 transition-transform duration-500 hover:scale-110" onerror="handleLogoFallbackHero(this)">
+                            <!-- Overlay Badge -->
+                            <div class="absolute bottom-4 left-4 right-4 bg-brand-dark/90 backdrop-blur-md p-4 rounded-xl border border-white/10 flex items-center justify-between">
+                                <div>
+                                    <p class="text-xs text-brand-muted font-bold uppercase tracking-widest">Lokasi Kami</p>
+                                    <p class="text-sm font-extrabold text-white">Main Street No. 45, Bali</p>
+                                </div>
+                                <div class="bg-brand-accent text-brand-dark p-2 rounded-lg">
+                                    <i class="fa-solid fa-map-location-dot text-lg"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Unique Features Section -->
+    <section id="fitur" class="py-24 bg-brand-darkGray/50 border-t border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-xs uppercase font-extrabold tracking-widest text-brand-accent bg-brand-accent/10 px-4 py-1.5 rounded-full">Mengapa NETGYM?</span>
+                <h2 class="font-sporty text-3xl sm:text-4xl font-extrabold mt-4 uppercase leading-snug">
+                    FASILITAS ELITE UNTUK <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-accent to-lime-300">HASIL OPTIMAL</span>
+                </h2>
+                <p class="text-brand-muted text-sm sm:text-base mt-2">
+                    Kami tidak hanya menawarkan alat, tapi juga ekosistem latihan yang modern, higienis, dan suportif.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Feature 1 -->
+                <div class="bg-brand-dark border border-white/10 p-8 rounded-2xl hover:border-brand-accent/50 transition-all duration-300 group hover:-translate-y-2">
+                    <div class="w-14 h-14 bg-brand-accent/10 rounded-xl flex items-center justify-center text-brand-accent text-2xl mb-6 group-hover:bg-brand-accent group-hover:text-brand-dark transition-all duration-300">
+                        <i class="fa-solid fa-dumbbell"></i>
+                    </div>
+                    <h3 class="font-sporty text-lg font-extrabold uppercase mb-3">Peralatan Premium Impor</h3>
+                    <p class="text-brand-muted text-sm leading-relaxed">
+                        Nikmati deretan alat latihan beban (strength) dan kardio berskala internasional dengan pemeliharaan harian standar tinggi.
+                    </p>
+                </div>
+                <!-- Feature 2 -->
+                <div class="bg-brand-dark border border-white/10 p-8 rounded-2xl hover:border-brand-accent/50 transition-all duration-300 group hover:-translate-y-2">
+                    <div class="w-14 h-14 bg-brand-accent/10 rounded-xl flex items-center justify-center text-brand-accent text-2xl mb-6 group-hover:bg-brand-accent group-hover:text-brand-dark transition-all duration-300">
+                        <i class="fa-solid fa-user-ninja"></i>
+                    </div>
+                    <h3 class="font-sporty text-lg font-extrabold uppercase mb-3">Personal Trainer Berlisensi</h3>
+                    <p class="text-brand-muted text-sm leading-relaxed">
+                        Capai target tubuh impian Anda lebih cepat dan aman dipandu langsung oleh pelatih profesional berpengalaman.
+                    </p>
+                </div>
+                <!-- Feature 3 -->
+                <div class="bg-brand-dark border border-white/10 p-8 rounded-2xl hover:border-brand-accent/50 transition-all duration-300 group hover:-translate-y-2">
+                    <div class="w-14 h-14 bg-brand-accent/10 rounded-xl flex items-center justify-center text-brand-accent text-2xl mb-6 group-hover:bg-brand-accent group-hover:text-brand-dark transition-all duration-300">
+                        <i class="fa-solid fa-heart-pulse"></i>
+                    </div>
+                    <h3 class="font-sporty text-lg font-extrabold uppercase mb-3">Pelacakan Komposisi Tubuh</h3>
+                    <p class="text-brand-muted text-sm leading-relaxed">
+                        Kami menyediakan tools analisis kebugaran presisi untuk melacak perkembangan lemak, otot, dan BMI Anda secara berkala.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Fitness Calculators Section -->
+    <section id="kalkulator" class="py-24 relative overflow-hidden">
+        <!-- Visual design decorations -->
+        <div class="absolute top-1/2 left-0 w-80 h-80 bg-brand-accent/5 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute bottom-0 right-0 w-80 h-80 bg-brand-accent/5 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-xs uppercase font-extrabold tracking-widest text-brand-accent bg-brand-accent/10 px-4 py-1.5 rounded-full">FITNESS TOOLKIT</span>
+                <h2 class="font-sporty text-3xl sm:text-4xl font-extrabold mt-4 uppercase leading-snug">
+                    Ukur Komposisi <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-accent to-lime-300">Fisik Anda</span>
+                </h2>
+                <p class="text-brand-muted text-sm sm:text-base mt-2">
+                    Gunakan kalkulator interaktif kami untuk mendiagnosis Body Mass Index (BMI) dan perkiraan persentase Lemak Tubuh Anda sekarang.
+                </p>
+            </div>
+
+            <!-- Tabs Navigation -->
+            <div class="flex justify-center mb-10">
+                <div class="inline-flex p-1.5 bg-brand-darkGray border border-white/10 rounded-2xl">
+                    <button onclick="switchTab('bmi')" id="tabBtn-bmi" class="px-6 py-3 rounded-xl font-bold text-sm tracking-wider uppercase transition-all duration-300 bg-brand-accent text-brand-dark shadow-md">
+                        <i class="fa-solid fa-weight-scale mr-2"></i> Kalkulator BMI
+                    </button>
+                    <button onclick="switchTab('fat')" id="tabBtn-fat" class="px-6 py-3 rounded-xl font-bold text-sm tracking-wider uppercase transition-all duration-300 text-brand-muted hover:text-white">
+                        <i class="fa-solid fa-percent mr-2"></i> Ukur Lemak Tubuh
+                    </button>
+                </div>
+            </div>
+
+            <!-- TAB 1: BMI CALCULATOR -->
+            <div id="tab-bmi" class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-stretch">
+                <!-- BMI Form -->
+                <div class="lg:col-span-5 bg-brand-darkGray border border-white/10 rounded-3xl p-8 flex flex-col justify-between">
+                    <div>
+                        <h3 class="font-sporty text-xl font-extrabold uppercase mb-6 flex items-center">
+                            <span class="w-2.5 h-6 bg-brand-accent rounded-full mr-3"></span> Input Data BMI
+                        </h3>
+                        <form id="bmiForm" onsubmit="calculateBMI(event)" class="space-y-6">
+                            <div>
+                                <label class="block text-xs uppercase font-extrabold tracking-wider text-brand-muted mb-2">Berat Badan (kg)</label>
+                                <div class="relative">
+                                    <input type="number" id="bmiWeight" required min="30" max="250" placeholder="Contoh: 70" class="w-full bg-brand-dark border border-white/10 rounded-xl px-4 py-3.5 text-white placeholder-neutral-600 focus:outline-none focus:border-brand-accent transition-colors text-lg font-bold">
+                                    <span class="absolute right-4 top-1/2 -translate-y-1/2 text-sm text-brand-muted font-bold">KG</span>
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-xs uppercase font-extrabold tracking-wider text-brand-muted mb-2">Tinggi Badan (cm)</label>
+                                <div class="relative">
+                                    <input type="number" id="bmiHeight" required min="100" max="250" placeholder="Contoh: 170" class="w-full bg-brand-dark border border-white/10 rounded-xl px-4 py-3.5 text-white placeholder-neutral-600 focus:outline-none focus:border-brand-accent transition-colors text-lg font-bold">
+                                    <span class="absolute right-4 top-1/2 -translate-y-1/2 text-sm text-brand-muted font-bold">CM</span>
+                                </div>
+                            </div>
+                            <button type="submit" class="w-full bg-brand-accent hover:bg-brand-accentHover text-brand-dark font-extrabold py-4 rounded-xl text-sm uppercase tracking-widest transition-all duration-300 shadow-lg shadow-brand-accent/20">
+                                <i class="fa-solid fa-calculator mr-2"></i> Hitung BMI Sekarang
+                            </button>
+                        </form>
+                    </div>
+
+                    <!-- Dynamic Results Box -->
+                    <div id="bmiResultBox" class="mt-8 p-6 bg-brand-dark border border-brand-accent/20 rounded-2xl hidden transition-all duration-300">
+                        <p class="text-xs uppercase font-bold tracking-wider text-brand-muted">Skor BMI Anda</p>
+                        <div class="flex items-baseline space-x-3 mt-1">
+                            <span id="bmiScore" class="text-4xl font-extrabold text-brand-accent font-sporty">--.-</span>
+                            <span id="bmiCategoryBadge" class="text-xs font-extrabold px-3 py-1 rounded-full uppercase bg-yellow-500/20 text-yellow-400">Normal</span>
+                        </div>
+                        <p id="bmiAdvice" class="text-xs text-brand-muted mt-2 leading-relaxed">Masukkan berat dan tinggi badan Anda di atas untuk melihat analisis komprehensif.</p>
+                    </div>
+                </div>
+
+                <!-- BMI Classification Reference Table -->
+                <div class="lg:col-span-7 bg-brand-darkGray border border-white/10 rounded-3xl p-8">
+                    <h3 class="font-sporty text-xl font-extrabold uppercase mb-6 flex items-center">
+                        <span class="w-2.5 h-6 bg-brand-accent rounded-full mr-3"></span> Tabel Klasifikasi BMI (WHO)
+                    </h3>
+                    <p class="text-brand-muted text-xs mb-4">Body Mass Index (BMI) atau Indeks Massa Tubuh (IMT) adalah metrik standar untuk memantau status berat badan ideal.</p>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left text-xs border-collapse">
+                            <thead>
+                                <tr class="border-b border-white/10 text-brand-muted font-extrabold uppercase">
+                                    <th class="py-3 px-2">Kategori</th>
+                                    <th class="py-3 px-2">Rentang IMT</th>
+                                    <th class="py-3 px-2">Keterangan / Risiko</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-white/5">
+                                <tr id="row-bmi-under" class="hover:bg-white/5 transition-colors">
+                                    <td class="py-4 px-2 font-bold text-sky-400">Kekurangan Berat Badan</td>
+                                    <td class="py-4 px-2">&lt; 18.5</td>
+                                    <td class="py-4 px-2 text-brand-muted">Risiko malnutrisi & gangguan kesehatan sistem imun.</td>
+                                </tr>
+                                <tr id="row-bmi-normal" class="hover:bg-white/5 transition-colors">
+                                    <td class="py-4 px-2 font-bold text-brand-accent">Normal (Ideal)</td>
+                                    <td class="py-4 px-2">18.5 - 24.9</td>
+                                    <td class="py-4 px-2 text-brand-muted">Berat badan seimbang, minim risiko metabolik kardio.</td>
+                                </tr>
+                                <tr id="row-bmi-over" class="hover:bg-white/5 transition-colors">
+                                    <td class="py-4 px-2 font-bold text-yellow-500">Kelebihan Berat Badan</td>
+                                    <td class="py-4 px-2">25.0 - 29.9</td>
+                                    <td class="py-4 px-2 text-brand-muted">Lampu kuning, tingkatkan porsi aktivitas & pola makan sehat.</td>
+                                </tr>
+                                <tr id="row-bmi-obese" class="hover:bg-white/5 transition-colors">
+                                    <td class="py-4 px-2 font-bold text-red-500">Obesitas</td>
+                                    <td class="py-4 px-2">&ge; 30.0</td>
+                                    <td class="py-4 px-2 text-brand-muted">Risiko tinggi penyakit jantung, diabetes, dan stroke.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 2: BODY FAT CALCULATOR (U.S. NAVY METHOD) -->
+            <div id="tab-fat" class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-stretch hidden">
+                <!-- Body Fat Form -->
+                <div class="lg:col-span-5 bg-brand-darkGray border border-white/10 rounded-3xl p-8 flex flex-col justify-between">
+                    <div>
+                        <h3 class="font-sporty text-xl font-extrabold uppercase mb-6 flex items-center">
+                            <span class="w-2.5 h-6 bg-brand-accent rounded-full mr-3"></span> Pengukur Lemak Tubuh
+                        </h3>
+                        <form id="fatForm" onsubmit="calculateBodyFat(event)" class="space-y-4">
+                            <!-- Gender selection -->
+                            <div>
+                                <label class="block text-xs uppercase font-extrabold tracking-wider text-brand-muted mb-2">Jenis Kelamin</label>
+                                <div class="grid grid-cols-2 gap-4">
+                                    <label class="cursor-pointer">
+                                        <input type="radio" name="gender" value="male" checked onclick="toggleGenderInputs('male')" class="sr-only peer">
+                                        <div class="py-3 text-center rounded-xl border border-white/10 peer-checked:border-brand-accent peer-checked:bg-brand-accent/10 peer-checked:text-brand-accent font-bold text-sm transition-all duration-200">
+                                            <i class="fa-solid fa-mars mr-1"></i> Pria
+                                        </div>
+                                    </label>
+                                    <label class="cursor-pointer">
+                                        <input type="radio" name="gender" value="female" onclick="toggleGenderInputs('female')" class="sr-only peer">
+                                        <div class="py-3 text-center rounded-xl border border-white/10 peer-checked:border-brand-accent peer-checked:bg-brand-accent/10 peer-checked:text-brand-accent font-bold text-sm transition-all duration-200">
+                                            <i class="fa-solid fa-venus mr-1"></i> Wanita
+                                        </div>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- Height -->
+                            <div>
+                                <label class="block text-xs uppercase font-extrabold tracking-wider text-brand-muted mb-1">Tinggi Badan (cm)</label>
+                                <div class="relative">
+                                    <input type="number" id="fatHeight" required min="100" max="250" placeholder="Tinggi" class="w-full bg-brand-dark border border-white/10 rounded-xl px-4 py-2.5 text-white placeholder-neutral-600 focus:outline-none focus:border-brand-accent transition-colors text-base font-bold">
+                                    <span class="absolute right-4 top-1/2 -translate-y-1/2 text-xs text-brand-muted font-bold">CM</span>
+                                </div>
+                            </div>
+
+                            <!-- Neck (Lingkar Leher) -->
+                            <div>
+                                <label class="block text-xs uppercase font-extrabold tracking-wider text-brand-muted mb-1">Lingkar Leher (cm)</label>
+                                <div class="relative">
+                                    <input type="number" id="fatNeck" required min="20" max="70" placeholder="Lingkar Leher" class="w-full bg-brand-dark border border-white/10 rounded-xl px-4 py-2.5 text-white placeholder-neutral-600 focus:outline-none focus:border-brand-accent transition-colors text-base font-bold">
+                                    <span class="absolute right-4 top-1/2 -translate-y-1/2 text-xs text-brand-muted font-bold">CM</span>
+                                </div>
+                                <span class="text-[10px] text-brand-muted mt-0.5 block">Diukur horizontal tepat di bawah jakun.</span>
+                            </div>
+
+                            <!-- Waist (Lingkar Perut) -->
+                            <div>
+                                <label class="block text-xs uppercase font-extrabold tracking-wider text-brand-muted mb-1">Lingkar Perut / Pinggang Atas (cm)</label>
+                                <div class="relative">
+                                    <input type="number" id="fatWaist" required min="40" max="180" placeholder="Lingkar Perut" class="w-full bg-brand-dark border border-white/10 rounded-xl px-4 py-2.5 text-white placeholder-neutral-600 focus:outline-none focus:border-brand-accent transition-colors text-base font-bold">
+                                    <span class="absolute right-4 top-1/2 -translate-y-1/2 text-xs text-brand-muted font-bold">CM</span>
+                                </div>
+                                <span class="text-[10px] text-brand-muted mt-0.5 block">Pria: sejajar pusar. Wanita: di bagian terkecil pinggang.</span>
+                            </div>
+
+                            <!-- Hips (Lingkar Pinggul/Pinggang Bawah - Khusus Wanita) -->
+                            <div id="femaleHipInput" class="hidden">
+                                <label class="block text-xs uppercase font-extrabold tracking-wider text-brand-muted mb-1">Lingkar Pinggul (Hip) (cm)</label>
+                                <div class="relative">
+                                    <input type="number" id="fatHip" min="40" max="180" placeholder="Lingkar Pinggul" class="w-full bg-brand-dark border border-white/10 rounded-xl px-4 py-2.5 text-white placeholder-neutral-600 focus:outline-none focus:border-brand-accent transition-colors text-base font-bold">
+                                    <span class="absolute right-4 top-1/2 -translate-y-1/2 text-xs text-brand-muted font-bold">CM</span>
+                                </div>
+                                <span class="text-[10px] text-brand-muted mt-0.5 block">Diukur pada lingkar terlebar pantat/pinggul.</span>
+                            </div>
+
+                            <button type="submit" class="w-full bg-brand-accent hover:bg-brand-accentHover text-brand-dark font-extrabold py-4 rounded-xl text-sm uppercase tracking-widest transition-all duration-300 shadow-lg shadow-brand-accent/20">
+                                <i class="fa-solid fa-calculator mr-2"></i> Hitung Lemak Tubuh
+                            </button>
+                        </form>
+                    </div>
+
+                    <!-- Dynamic Results Box -->
+                    <div id="fatResultBox" class="mt-6 p-6 bg-brand-dark border border-brand-accent/20 rounded-2xl hidden transition-all duration-300">
+                        <p class="text-xs uppercase font-bold tracking-wider text-brand-muted">Kadar Lemak Tubuh Anda</p>
+                        <div class="flex items-baseline space-x-3 mt-1">
+                            <span id="fatScore" class="text-4xl font-extrabold text-brand-accent font-sporty">--.-</span>
+                            <span id="fatCategoryBadge" class="text-xs font-extrabold px-3 py-1 rounded-full uppercase bg-lime-500/20 text-brand-accent">Fit</span>
+                        </div>
+                        <p id="fatAdvice" class="text-xs text-brand-muted mt-2 leading-relaxed">Sistem estimasi militer U.S. Navy memiliki akurasi tinggi tanpa memerlukan caliper.</p>
+                    </div>
+                </div>
+
+                <!-- Body Fat Reference Table -->
+                <div class="lg:col-span-7 bg-brand-darkGray border border-white/10 rounded-3xl p-8">
+                    <h3 class="font-sporty text-xl font-extrabold uppercase mb-6 flex items-center">
+                        <span class="w-2.5 h-6 bg-brand-accent rounded-full mr-3"></span> Tabel Klasifikasi Kadar Lemak (%)
+                    </h3>
+                    <p class="text-brand-muted text-xs mb-4">Pengukuran didasarkan pada standar rasio kebugaran American Council on Exercise (ACE).</p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <!-- Male Table -->
+                        <div>
+                            <h4 class="font-bold text-sm text-brand-accent mb-3 flex items-center">
+                                <i class="fa-solid fa-mars mr-2"></i> Kategori Pria
+                            </h4>
+                            <table class="w-full text-left text-xs border-collapse">
+                                <thead>
+                                    <tr class="border-b border-white/10 text-brand-muted font-bold">
+                                        <th class="pb-2">Kategori</th>
+                                        <th class="pb-2">Persentase</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-white/5 text-brand-muted">
+                                    <tr>
+                                        <td class="py-2.5 font-bold text-white">Lemak Esensial</td>
+                                        <td class="py-2.5">2 - 5%</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="py-2.5 font-bold text-lime-400">Atlet</td>
+                                        <td class="py-2.5">6 - 13%</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="py-2.5 font-bold text-brand-accent">Bugar (Fitness)</td>
+                                        <td class="py-2.5">14 - 17%</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="py-2.5 font-bold text-yellow-500">Sedang (Average)</td>
+                                        <td class="py-2.5">18 - 24%</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="py-2.5 font-bold text-red-500">Berlebih (Obese)</td>
+                                        <td class="py-2.5">&ge; 25%</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <!-- Female Table -->
+                        <div>
+                            <h4 class="font-bold text-sm text-brand-accent mb-3 flex items-center">
+                                <i class="fa-solid fa-venus mr-2"></i> Kategori Wanita
+                            </h4>
+                            <table class="w-full text-left text-xs border-collapse">
+                                <thead>
+                                    <tr class="border-b border-white/10 text-brand-muted font-bold">
+                                        <th class="pb-2">Kategori</th>
+                                        <th class="pb-2">Persentase</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-white/5 text-brand-muted">
+                                    <tr>
+                                        <td class="py-2.5 font-bold text-white">Lemak Esensial</td>
+                                        <td class="py-2.5">10 - 13%</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="py-2.5 font-bold text-lime-400">Atlet</td>
+                                        <td class="py-2.5">14 - 20%</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="py-2.5 font-bold text-brand-accent">Bugar (Fitness)</td>
+                                        <td class="py-2.5">21 - 24%</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="py-2.5 font-bold text-yellow-500">Sedang (Average)</td>
+                                        <td class="py-2.5">25 - 31%</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="py-2.5 font-bold text-red-500">Berlebih (Obese)</td>
+                                        <td class="py-2.5">&ge; 32%</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Membership Plans Section -->
+    <section id="paket" class="py-24 bg-brand-darkGray/30 border-t border-b border-white/10 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-xs uppercase font-extrabold tracking-widest text-brand-accent bg-brand-accent/10 px-4 py-1.5 rounded-full">MEMBERSHIP NETGYM</span>
+                <h2 class="font-sporty text-3xl sm:text-4xl font-extrabold mt-4 uppercase leading-snug">
+                    PILIH PAKET <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-accent to-lime-300">TRANSFORMASI Anda</span>
+                </h2>
+                <p class="text-brand-muted text-sm sm:text-base mt-2">
+                    Bergabung tanpa ribet. Pilih paket bulanan terbaik yang sesuai dengan ritme latihan Anda.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
+                <!-- Plan 1: Daily/Trial -->
+                <div class="bg-brand-dark border border-white/10 p-8 rounded-3xl flex flex-col justify-between hover:border-white/20 transition-all duration-300 relative group">
+                    <div>
+                        <span class="text-xs font-bold tracking-wider text-brand-muted uppercase">Single Pass</span>
+                        <h3 class="font-sporty text-xl font-extrabold uppercase mt-2">Harian (Daily)</h3>
+                        <p class="text-brand-muted text-xs mt-1">Sempurna untuk kunjungan uji coba santai.</p>
+                        <div class="my-6">
+                            <span class="text-3xl font-extrabold text-white">Rp 50K</span>
+                            <span class="text-xs text-brand-muted"> / hari</span>
+                        </div>
+                        <ul class="space-y-3.5 text-xs text-brand-muted border-t border-white/5 pt-6">
+                            <li><i class="fa-solid fa-circle-check text-brand-accent mr-2"></i> Akses Area Gym Lengkap (1 Hari)</li>
+                            <li><i class="fa-solid fa-circle-check text-brand-accent mr-2"></i> Akses Ruang Ganti & Locker</li>
+                            <li><i class="fa-solid fa-circle-check text-brand-accent mr-2"></i> Shower Air Hangat</li>
+                            <li class="line-through opacity-45"><i class="fa-solid fa-circle-xmark mr-2 text-red-500"></i> Gratis Konsultasi Trainer</li>
+                            <li class="line-through opacity-45"><i class="fa-solid fa-circle-xmark mr-2 text-red-500"></i> Analisis Fat & BMI Bulanan</li>
+                        </ul>
+                    </div>
+                    <button onclick="handleJoinPlan('Daily')" class="w-full mt-8 bg-brand-darkGray hover:bg-neutral-800 text-white font-bold py-3.5 rounded-xl text-xs uppercase tracking-wider border border-white/10 hover:border-brand-accent/50 transition-all duration-300">
+                        Daftar Kunjungan
+                    </button>
+                </div>
+
+                <!-- Plan 2: Best Value (Monthly) -->
+                <div class="bg-brand-dark border-2 border-brand-accent p-8 rounded-3xl flex flex-col justify-between hover:scale-[1.02] transition-all duration-300 relative group shadow-2xl shadow-brand-accent/5">
+                    <div class="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-brand-accent text-brand-dark font-extrabold text-[10px] tracking-widest uppercase px-4 py-1 rounded-full shadow-md">
+                        REKOMENDASI UTAMA
+                    </div>
+                    <div>
+                        <span class="text-xs font-bold tracking-wider text-brand-accent uppercase">Unlimited Access</span>
+                        <h3 class="font-sporty text-xl font-extrabold uppercase mt-2">Bulanan (Monthly)</h3>
+                        <p class="text-brand-muted text-xs mt-1">Paling populer untuk progres intensif rutin.</p>
+                        <div class="my-6">
+                            <span class="text-4xl font-extrabold text-brand-accent">Rp 350K</span>
+                            <span class="text-xs text-brand-muted"> / bulan</span>
+                        </div>
+                        <ul class="space-y-3.5 text-xs text-white/95 border-t border-white/10 pt-6">
+                            <li><i class="fa-solid fa-circle-check text-brand-accent mr-2"></i> Akses Tak Terbatas (30 Hari)</li>
+                            <li><i class="fa-solid fa-circle-check text-brand-accent mr-2"></i> Akses Loker, Shower & WiFi</li>
+                            <li><i class="fa-solid fa-circle-check text-brand-accent mr-2"></i> Gratis 1x Sesi PT (Member Baru)</li>
+                            <li><i class="fa-solid fa-circle-check text-brand-accent mr-2"></i> 1x Analisis Komposisi Tubuh</li>
+                            <li><i class="fa-solid fa-circle-check text-brand-accent mr-2"></i> Akses ke Komunitas NETGYM</li>
+                        </ul>
+                    </div>
+                    <button onclick="handleJoinPlan('Monthly')" class="w-full mt-8 bg-brand-accent hover:bg-brand-accentHover text-brand-dark font-extrabold py-3.5 rounded-xl text-xs uppercase tracking-widest transition-all duration-300 shadow-md">
+                        Pilih Bulanan
+                    </button>
+                </div>
+
+                <!-- Plan 3: Pro annual -->
+                <div class="bg-brand-dark border border-white/10 p-8 rounded-3xl flex flex-col justify-between hover:border-white/20 transition-all duration-300 relative group">
+                    <div>
+                        <span class="text-xs font-bold tracking-wider text-brand-muted uppercase">VIP Lifestyle</span>
+                        <h3 class="font-sporty text-xl font-extrabold uppercase mt-2">Tahunan (Yearly)</h3>
+                        <p class="text-brand-muted text-xs mt-1">Dedikasi jangka panjang dengan harga hemat.</p>
+                        <div class="my-6">
+                            <span class="text-3xl font-extrabold text-white">Rp 3.0M</span>
+                            <span class="text-xs text-brand-muted"> / tahun</span>
+                        </div>
+                        <ul class="space-y-3.5 text-xs text-brand-muted border-t border-white/5 pt-6">
+                            <li><i class="fa-solid fa-circle-check text-brand-accent mr-2"></i> Akses Tak Terbatas (365 Hari)</li>
+                            <li><i class="fa-solid fa-circle-check text-brand-accent mr-2"></i> Semua Fasilitas Standard & VIP</li>
+                            <li><i class="fa-solid fa-circle-check text-brand-accent mr-2"></i> Gratis 3x Sesi Personal Trainer</li>
+                            <li><i class="fa-solid fa-circle-check text-brand-accent mr-2"></i> Analisis Lemak & BMI Bulanan</li>
+                            <li><i class="fa-solid fa-circle-check text-brand-accent mr-2"></i> Merchandise Eksklusif Kaos NETGYM</li>
+                        </ul>
+                    </div>
+                    <button onclick="handleJoinPlan('Yearly')" class="w-full mt-8 bg-brand-darkGray hover:bg-neutral-800 text-white font-bold py-3.5 rounded-xl text-xs uppercase tracking-wider border border-white/10 hover:border-brand-accent/50 transition-all duration-300">
+                        Ambil Promo Setahun
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Visitor Reviews (Ulasan Pengunjung) Section -->
+    <section id="ulasan" class="py-24 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+                
+                <!-- Left Grid: Header & Add Review Form -->
+                <div class="lg:col-span-5 space-y-6">
+                    <div>
+                        <span class="text-xs uppercase font-extrabold tracking-widest text-brand-accent bg-brand-accent/10 px-4 py-1.5 rounded-full">TESTIMONI</span>
+                        <h2 class="font-sporty text-3xl font-extrabold mt-4 uppercase leading-tight">
+                            Apa Kata <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-accent to-lime-300">Mereka?</span>
+                        </h2>
+                        <p class="text-brand-muted text-sm mt-2 leading-relaxed">
+                            Suara asli dari member NETGYM yang telah berhasil merajut hidup sehat dan tubuh ideal mereka bersama kami.
+                        </p>
+                    </div>
+
+                    <!-- Interactive Form: Tambah Ulasan -->
+                    <div class="bg-brand-darkGray border border-white/10 p-6 rounded-2xl">
+                        <h3 class="font-sporty text-sm font-extrabold uppercase mb-4 text-white">Bagikan Pengalaman Anda</h3>
+                        <form id="reviewForm" onsubmit="submitReview(event)" class="space-y-4">
+                            <div>
+                                <label class="block text-[11px] uppercase font-bold text-brand-muted mb-1">Nama Lengkap</label>
+                                <input type="text" id="reviewerName" required placeholder="Contoh: Ryan Perkasa" class="w-full bg-brand-dark border border-white/10 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-brand-accent transition-colors">
+                            </div>
+                            <div>
+                                <label class="block text-[11px] uppercase font-bold text-brand-muted mb-1">Rating Anda</label>
+                                <div class="flex items-center space-x-2">
+                                    <div class="flex space-x-1" id="starSelector">
+                                        <!-- Interactive Stars -->
+                                        <button type="button" onclick="setRating(1)" class="text-xl text-neutral-600 hover:text-brand-accent transition-colors focus:outline-none"><i class="fa-solid fa-star"></i></button>
+                                        <button type="button" onclick="setRating(2)" class="text-xl text-neutral-600 hover:text-brand-accent transition-colors focus:outline-none"><i class="fa-solid fa-star"></i></button>
+                                        <button type="button" onclick="setRating(3)" class="text-xl text-neutral-600 hover:text-brand-accent transition-colors focus:outline-none"><i class="fa-solid fa-star"></i></button>
+                                        <button type="button" onclick="setRating(4)" class="text-xl text-neutral-600 hover:text-brand-accent transition-colors focus:outline-none"><i class="fa-solid fa-star"></i></button>
+                                        <button type="button" onclick="setRating(5)" class="text-xl text-neutral-600 hover:text-brand-accent transition-colors focus:outline-none"><i class="fa-solid fa-star"></i></button>
+                                    </div>
+                                    <span id="ratingDisplayVal" class="text-xs font-bold text-brand-accent ml-2">(Pilih Rating)</span>
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-[11px] uppercase font-bold text-brand-muted mb-1">Ulasan Anda</label>
+                                <textarea id="reviewerText" required rows="3" placeholder="Sampaikan pendapat Anda tentang fasilitas, trainer, atau kebersihan di NETGYM..." class="w-full bg-brand-dark border border-white/10 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-brand-accent transition-colors resize-none"></textarea>
+                            </div>
+                            <button type="submit" class="w-full bg-brand-accent hover:bg-brand-accentHover text-brand-dark font-extrabold py-3 rounded-xl text-xs uppercase tracking-wider transition-all duration-300 shadow-md">
+                                Kirim Ulasan Saya
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Right Grid: Reviews Display Feed -->
+                <div class="lg:col-span-7 space-y-6">
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs font-extrabold text-brand-accent uppercase tracking-widest">UMPAN ULASAN KLIEN</span>
+                        <span class="text-xs text-brand-muted" id="reviewCountText">Memuat ulasan...</span>
+                    </div>
+
+                    <!-- Reviews Scrollbox Container -->
+                    <div id="reviewsContainer" class="space-y-4 max-h-[500px] overflow-y-auto pr-2">
+                        <!-- Dynamic items will be injected here via Javascript -->
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Info & Interactive Map Mock Section -->
+    <section class="py-16 bg-brand-darkGray/70 border-t border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div class="space-y-6">
+                <span class="text-xs uppercase font-extrabold tracking-widest text-brand-accent bg-brand-accent/10 px-4 py-1.5 rounded-full">KONTAK KAMI</span>
+                <h2 class="font-sporty text-2xl sm:text-3xl font-extrabold uppercase">SIAP MEMULAI <span class="text-brand-accent">HARI INI?</span></h2>
+                <p class="text-brand-muted text-sm leading-relaxed">
+                    Kunjungi cabang terdekat kami atau hubungi nomor pelayanan member untuk konsultasi program gratis. Kami siap menyambut Anda.
+                </p>
+                <div class="space-y-4 text-xs">
+                    <div class="flex items-start space-x-3">
+                        <div class="text-brand-accent text-base mt-0.5"><i class="fa-solid fa-location-dot"></i></div>
+                        <div>
+                            <p class="font-bold text-white text-sm">NETGYM Bali Headquarters</p>
+                            <p class="text-brand-muted mt-1">Jl. Sunset Road No. 88X, Kuta, Bali, Indonesia 80361</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start space-x-3">
+                        <div class="text-brand-accent text-base mt-0.5"><i class="fa-solid fa-phone"></i></div>
+                        <div>
+                            <p class="font-bold text-white text-sm">Telepon & WhatsApp</p>
+                            <p class="text-brand-muted mt-1">+62 812-3456-7890 (Layanan 24/7)</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start space-x-3">
+                        <div class="text-brand-accent text-base mt-0.5"><i class="fa-solid fa-envelope"></i></div>
+                        <div>
+                            <p class="font-bold text-white text-sm">Surel Dukungan</p>
+                            <p class="text-brand-muted mt-1">support@netgymfitness.id</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sleek map mock framework -->
+            <div class="relative bg-brand-dark border border-white/10 rounded-3xl p-4 h-72 sm:h-80 overflow-hidden group">
+                <div class="absolute inset-0 opacity-50 bg-cover bg-center transition-transform duration-700 group-hover:scale-105" style="background-image: url('https://placehold.co/600x400/151c2c/ffffff?text=PETA+NETGYM+BALI+HQ');"></div>
+                <!-- Interactive styling overlay -->
+                <div class="absolute inset-0 bg-gradient-to-t from-brand-dark via-brand-dark/20 to-transparent flex flex-col justify-end p-6">
+                    <span class="inline-block bg-brand-accent text-brand-dark px-3 py-1 rounded-full text-[10px] font-extrabold uppercase w-max tracking-wider mb-2">Live Map</span>
+                    <h3 class="font-sporty text-lg font-extrabold uppercase text-white">LIHAT DI GOOGLE MAPS</h3>
+                    <p class="text-xs text-brand-muted mt-1">Dapatkan navigasi satu klik langsung ke lokasi parkir luas NETGYM.</p>
+                    <button onclick="handleNavigationAlert()" class="mt-4 bg-white hover:bg-neutral-100 text-brand-dark text-xs font-bold py-2.5 px-4 rounded-xl flex items-center justify-center space-x-2 transition-colors w-max">
+                        <i class="fa-solid fa-route"></i> <span>Mulai Navigasi</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Toast Notification Box (Safer Alternative to alert()) -->
+    <div id="toastNotification" class="fixed bottom-6 right-6 z-50 transform translate-y-24 opacity-0 transition-all duration-300 bg-brand-darkGray border-2 border-brand-accent p-4 rounded-2xl flex items-center space-x-3 shadow-xl max-w-sm pointer-events-none">
+        <div class="w-8 h-8 bg-brand-accent/20 text-brand-accent rounded-full flex items-center justify-center text-sm" id="toastIcon">
+            <i class="fa-solid fa-circle-check"></i>
+        </div>
+        <div>
+            <p class="text-xs font-bold text-white uppercase tracking-wider" id="toastTitle">Sistem NETGYM</p>
+            <p class="text-[11px] text-brand-muted mt-0.5" id="toastMessage">Operasi berhasil dilaksanakan.</p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-brand-dark border-t border-white/10 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center md:text-left flex flex-col md:flex-row justify-between items-center gap-8">
+            <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 rounded-full border border-brand-accent/50 overflow-hidden flex items-center justify-center bg-black">
+                    <img id="footerLogo" src="NETGYM LOGO.jpg" alt="NETGYM Footer Logo" class="object-cover w-full h-full rounded-full" onerror="handleLogoError()">
+                </div>
+                <div>
+                    <span class="font-sporty text-lg tracking-wider font-extrabold text-white">NET<span class="text-brand-accent">GYM</span></span>
+                    <p class="text-[9px] text-brand-muted tracking-widest uppercase font-bold">Elevate Your Limits</p>
+                </div>
+            </div>
+
+            <!-- Social Media Handles -->
+            <div class="flex space-x-6 text-brand-muted text-lg">
+                <a href="#" class="hover:text-brand-accent transition-colors"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#" class="hover:text-brand-accent transition-colors"><i class="fa-brands fa-facebook"></i></a>
+                <a href="#" class="hover:text-brand-accent transition-colors"><i class="fa-brands fa-tiktok"></i></a>
+                <a href="#" class="hover:text-brand-accent transition-colors"><i class="fa-brands fa-youtube"></i></a>
+            </div>
+
+            <p class="text-brand-muted text-xs">
+                &copy; 2026 <span class="text-white font-bold">NETGYM & Fitness Center</span>. Hak Cipta Dilindungi.
+            </p>
+        </div>
+    </footer>
+
+    <!-- JavaScript Application Logic -->
+    <script>
+        // --- LOGO FALLBACK SYSTEM ---
+        // Fallback in case "NETGYM LOGO.jpg" fails to load locally or on first preview render
+        function handleLogoError() {
+            const logoImgs = document.querySelectorAll('#gymLogo, #footerLogo');
+            logoImgs.forEach(img => {
+                // Replace image source with an inline high-quality generated SVG representing a sporty weights logo
+                img.style.display = 'none';
+                const parent = img.parentNode;
+                
+                // If we haven't already injected the fallback, let's create a beautiful replacement
+                if (!parent.querySelector('.logo-fallback')) {
+                    const fallback = document.createElement('div');
+                    fallback.className = "logo-fallback text-brand-accent text-lg font-extrabold font-sporty flex items-center justify-center w-full h-full";
+                    fallback.innerHTML = `<i class="fa-solid fa-dumbbell"></i>`;
+                    parent.appendChild(fallback);
+                }
+            });
+        }
+
+        function handleLogoFallbackHero(imgElement) {
+            // Replaces hero showcase banner image if NETGYM LOGO.jpg is missing or running standalone
+            imgElement.src = "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&q=80&w=800";
+        }
+
+        // --- MOBILE MENU FUNCTIONALITY ---
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        function toggleMobileMenu() {
+            mobileMenu.classList.add('hidden');
+        }
+
+        // --- CUSTOM TOAST MESSAGE SYSTEM ---
+        function showToast(title, message, isSuccess = true) {
+            const toast = document.getElementById('toastNotification');
+            const tTitle = document.getElementById('toastTitle');
+            const tMessage = document.getElementById('toastMessage');
+            const tIcon = document.getElementById('toastIcon');
+
+            tTitle.innerText = title;
+            tMessage.innerText = message;
+            
+            if (isSuccess) {
+                tIcon.className = "w-8 h-8 bg-brand-accent/20 text-brand-accent rounded-full flex items-center justify-center text-sm";
+                tIcon.innerHTML = `<i class="fa-solid fa-circle-check"></i>`;
+                toast.style.borderColor = "#ADFF2F";
+            } else {
+                tIcon.className = "w-8 h-8 bg-red-500/20 text-red-500 rounded-full flex items-center justify-center text-sm";
+                tIcon.innerHTML = `<i class="fa-solid fa-triangle-exclamation"></i>`;
+                toast.style.borderColor = "#EF4444";
+            }
+
+            // Slide in animation
+            toast.classList.remove('translate-y-24', 'opacity-0');
+            toast.classList.add('translate-y-0', 'opacity-100');
+
+            setTimeout(() => {
+                toast.classList.add('translate-y-24', 'opacity-0');
+                toast.classList.remove('translate-y-0', 'opacity-100');
+            }, 4000);
+        }
+
+        // --- TAB SWITCHER SYSTEM ---
+        function switchTab(tabId) {
+            const tabBmi = document.getElementById('tab-bmi');
+            const tabFat = document.getElementById('tab-fat');
+            const btnBmi = document.getElementById('tabBtn-bmi');
+            const btnFat = document.getElementById('tabBtn-fat');
+
+            if (tabId === 'bmi') {
+                tabBmi.classList.remove('hidden');
+                tabFat.classList.add('hidden');
+                // Adjust button styles
+                btnBmi.className = "px-6 py-3 rounded-xl font-bold text-sm tracking-wider uppercase transition-all duration-300 bg-brand-accent text-brand-dark shadow-md";
+                btnFat.className = "px-6 py-3 rounded-xl font-bold text-sm tracking-wider uppercase transition-all duration-300 text-brand-muted hover:text-white";
+            } else {
+                tabBmi.classList.add('hidden');
+                tabFat.classList.remove('hidden');
+                // Adjust button styles
+                btnBmi.className = "px-6 py-3 rounded-xl font-bold text-sm tracking-wider uppercase transition-all duration-300 text-brand-muted hover:text-white";
+                btnFat.className = "px-6 py-3 rounded-xl font-bold text-sm tracking-wider uppercase transition-all duration-300 bg-brand-accent text-brand-dark shadow-md";
+            }
+        }
+
+        // --- GENDER INPUTS TOGGLE FOR BODY FAT ---
+        function toggleGenderInputs(gender) {
+            const femaleHipInput = document.getElementById('femaleHipInput');
+            const hipInputField = document.getElementById('fatHip');
+
+            if (gender === 'female') {
+                femaleHipInput.classList.remove('hidden');
+                hipInputField.setAttribute('required', 'required');
+            } else {
+                femaleHipInput.classList.add('hidden');
+                hipInputField.removeAttribute('required');
+            }
+        }
+
+        // --- INTERACTIVE BMI CALCULATION ---
+        function calculateBMI(event) {
+            event.preventDefault();
+            const weight = parseFloat(document.getElementById('bmiWeight').value);
+            const heightCm = parseFloat(document.getElementById('bmiHeight').value);
+
+            if (isNaN(weight) || isNaN(heightCm) || heightCm <= 0) {
+                showToast("Kesalahan Input", "Harap masukkan nilai tinggi dan berat badan yang logis.", false);
+                return;
+            }
+
+            const heightM = heightCm / 100;
+            const bmi = weight / (heightM * heightM);
+            const scoreFormatted = bmi.toFixed(1);
+
+            let category = "";
+            let badgeClass = "";
+            let advice = "";
+
+            // Reset table highlights
+            document.getElementById('row-bmi-under').classList.remove('bg-sky-500/10', 'border-l-2', 'border-sky-400');
+            document.getElementById('row-bmi-normal').classList.remove('bg-lime-500/10', 'border-l-2', 'border-brand-accent');
+            document.getElementById('row-bmi-over').classList.remove('bg-yellow-500/10', 'border-l-2', 'border-yellow-500');
+            document.getElementById('row-bmi-obese').classList.remove('bg-red-500/10', 'border-l-2', 'border-red-500');
+
+            if (bmi < 18.5) {
+                category = "Kekurangan Berat";
+                badgeClass = "bg-sky-500/20 text-sky-400";
+                advice = "Indeks massa tubuh Anda menunjukkan Anda berada di bawah rentang normal. Disarankan meningkatkan surplus kalori sehat dan fokus pada latihan kekuatan beban.";
+                document.getElementById('row-bmi-under').classList.add('bg-sky-500/10', 'border-l-2', 'border-sky-400');
+            } else if (bmi >= 18.5 && bmi < 25) {
+                category = "Sangat Ideal";
+                badgeClass = "bg-brand-accent/20 text-brand-accent";
+                advice = "Luar biasa! Berat badan Anda berada dalam kategori ideal. Pertahankan performa dengan latihan kardio dan latihan ketahanan teratur di NETGYM.";
+                document.getElementById('row-bmi-normal').classList.add('bg-lime-500/10', 'border-l-2', 'border-brand-accent');
+            } else if (bmi >= 25 && bmi < 30) {
+                category = "Kelebihan Berat";
+                badgeClass = "bg-yellow-500/20 text-yellow-400";
+                advice = "Anda mendekati batas obesitas ringan. Fokuslah pada defisit kalori, kombinasikan latihan HIIT dan latihan beban untuk mengencangkan otot Anda.";
+                document.getElementById('row-bmi-over').classList.add('bg-yellow-500/10', 'border-l-2', 'border-yellow-500');
+            } else {
+                category = "Obesitas";
+                badgeClass = "bg-red-500/20 text-red-500";
+                advice = "Berat badan Anda berada di zona kritis. Prioritaskan konsultasi dokter/trainer pribadi di NETGYM untuk merancang program kardio rendah risiko dan diet ketat.";
+                document.getElementById('row-bmi-obese').classList.add('bg-red-500/10', 'border-l-2', 'border-red-500');
+            }
+
+            // Display Results
+            const scoreEl = document.getElementById('bmiScore');
+            const badgeEl = document.getElementById('bmiCategoryBadge');
+            const adviceEl = document.getElementById('bmiAdvice');
+            const resultBox = document.getElementById('bmiResultBox');
+
+            scoreEl.innerText = scoreFormatted;
+            badgeEl.innerText = category;
+            badgeEl.className = `text-xs font-extrabold px-3 py-1 rounded-full uppercase ${badgeClass}`;
+            adviceEl.innerText = advice;
+
+            resultBox.classList.remove('hidden');
+            showToast("Kalkulator BMI", `Berhasil dihitung! IMT Anda: ${scoreFormatted} (${category})`);
+        }
+
+        // --- INTERACTIVE BODY FAT CALCULATION (U.S. NAVY METHOD) ---
+        function calculateBodyFat(event) {
+            event.preventDefault();
+            const gender = document.querySelector('input[name="gender"]:checked').value;
+            const height = parseFloat(document.getElementById('fatHeight').value);
+            const neck = parseFloat(document.getElementById('fatNeck').value);
+            const waist = parseFloat(document.getElementById('fatWaist').value);
+
+            let bodyFat = 0;
+
+            if (gender === 'male') {
+                if (waist <= neck) {
+                    showToast("Kesalahan Ukuran", "Lingkar perut pria harus lebih besar dari lingkar leher.", false);
+                    return;
+                }
+                // U.S. Navy Formula for Men (using log base 10)
+                bodyFat = 495 / (1.0324 - 0.19077 * Math.log10(waist - neck) + 0.15456 * Math.log10(height)) - 450;
+            } else {
+                const hip = parseFloat(document.getElementById('fatHip').value);
+                if (isNaN(hip)) {
+                    showToast("Kesalahan Input", "Silakan isi parameter lingkar pinggul untuk kalkulasi wanita.", false);
+                    return;
+                }
+                if ((waist + hip) <= neck) {
+                    showToast("Kesalahan Ukuran", "Akumulasi lingkar perut dan pinggul harus melebihi lingkar leher.", false);
+                    return;
+                }
+                // U.S. Navy Formula for Women (using log base 10)
+                bodyFat = 495 / (1.29579 - 0.35004 * Math.log10(waist + hip - neck) + 0.22100 * Math.log10(height)) - 450;
+            }
+
+            // Sanity check result bounds
+            if (bodyFat < 2 || bodyFat > 60) {
+                showToast("Akurasi Lemak", "Hasil kalkulasi tidak realistis. Mohon periksa kembali kesesuaian pita ukur Anda.", false);
+                return;
+            }
+
+            const fatFormatted = bodyFat.toFixed(1);
+            let category = "";
+            let badgeClass = "";
+            let advice = "";
+
+            if (gender === 'male') {
+                if (bodyFat < 6) {
+                    category = "Essential Fat";
+                    badgeClass = "bg-sky-500/20 text-sky-400";
+                    advice = "Rasio lemak esensial yang sangat minim. Cocok untuk ajang kompetisi binaraga, pertahankan asupan mikronutrisi agar tidak mengganggu hormon.";
+                } else if (bodyFat >= 6 && bodyFat < 14) {
+                    category = "Atlet";
+                    badgeClass = "bg-lime-500/20 text-lime-400";
+                    advice = "Sangat prima! Komposisi otot dominan dan kadar lemak sangat rendah khas atlet elit. Selamat atas performa diet dan latihan Anda!";
+                } else if (bodyFat >= 14 && bodyFat < 18) {
+                    category = "Bugar (Fit)";
+                    badgeClass = "bg-brand-accent/20 text-brand-accent";
+                    advice = "Rasio ideal dan sehat untuk penampilan estetis optimal. Anda berada dalam bentuk tubuh yang prima untuk kebugaran fungsional harian.";
+                } else if (bodyFat >= 18 && bodyFat < 25) {
+                    category = "Sedang (Average)";
+                    badgeClass = "bg-yellow-500/20 text-yellow-400";
+                    advice = "Kategori sedang. Sedikit penyesuaian porsi kalori dan komitmen latihan beban di NETGYM akan mengantar Anda ke tubuh ideal.";
+                } else {
+                    category = "Berlebih (Obese)";
+                    badgeClass = "bg-red-500/20 text-red-500";
+                    advice = "Kadar lemak Anda melampaui ambang batas aman. Hubungi kami untuk merancang program kardio pembakaran lemak (fat-burning) optimal.";
+                }
+            } else {
+                // Female Standard Assessment
+                if (bodyFat < 14) {
+                    category = "Essential Fat";
+                    badgeClass = "bg-sky-500/20 text-sky-400";
+                    advice = "Rasio lemak esensial minimum wanita. Terlalu rendah tidak disarankan untuk metabolisme reproduksi yang sehat.";
+                } else if (bodyFat >= 14 && bodyFat < 21) {
+                    category = "Atlet";
+                    badgeClass = "bg-lime-500/20 text-lime-400";
+                    advice = "Sangat prima! Kadar lemak rendah, pembagian tonus otot sangat merata dan estetis. Teruskan latihan kardio aerobik rutin.";
+                } else if (bodyFat >= 21 && bodyFat < 25) {
+                    category = "Bugar (Fit)";
+                    badgeClass = "bg-brand-accent/20 text-brand-accent";
+                    advice = "Sangat ideal dan feminim. Proporsi tubuh kencang dan proporsional untuk segala aktivitas aktif Anda.";
+                } else if (bodyFat >= 25 && bodyFat < 32) {
+                    category = "Sedang (Average)";
+                    badgeClass = "bg-yellow-500/20 text-yellow-400";
+                    advice = "Rasio normal rata-rata. Mulailah mengadopsi program kekuatan dasar di gym kami untuk pembentukan otot pantat dan kaki yang ideal.";
+                } else {
+                    category = "Berlebih (Obese)";
+                    badgeClass = "bg-red-500/20 text-red-500";
+                    advice = "Kadar lemak berlebih terdeteksi. Mulailah komitmen berlatih kardio terpadu di NETGYM demi mengembalikan kesehatan kardiovaskular.";
+                }
+            }
+
+            // Display Results
+            const scoreEl = document.getElementById('fatScore');
+            const badgeEl = document.getElementById('fatCategoryBadge');
+            const adviceEl = document.getElementById('fatAdvice');
+            const resultBox = document.getElementById('fatResultBox');
+
+            scoreEl.innerText = `${fatFormatted}%`;
+            badgeEl.innerText = category;
+            badgeEl.className = `text-xs font-extrabold px-3 py-1 rounded-full uppercase ${badgeClass}`;
+            adviceEl.innerText = advice;
+
+            resultBox.classList.remove('hidden');
+            showToast("Kalkulator Lemak", `Lemak dihitung! Hasil: ${fatFormatted}% (${category})`);
+        }
+
+        // --- VISITOR REVIEWS STATE & STORAGE ---
+        let selectedRating = 0;
+        let mockReviews = [
+            {
+                id: 1,
+                name: "Dimas Adiputra",
+                rating: 5,
+                text: "NETGYM memiliki peralatan terbaik di kelasnya! Kebersihan area toilet dan locker room patut diacungi jempol. Selalu termotivasi berolahraga di sini setiap sore.",
+                date: "Hari ini",
+                avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=150"
+            },
+            {
+                id: 2,
+                name: "Kartika Sari",
+                rating: 5,
+                text: "Trainer wanitanya sangat ramah dan sabar mendampingi program penurunan berat badan saya. Sudah turun 6kg dalam waktu dua bulan latihan konsisten!",
+                date: "Kemarin",
+                avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=150"
+            },
+            {
+                id: 3,
+                name: "Kevin Sanjaya",
+                rating: 4,
+                text: "Suasana sporty modern sangat terasa, lagunya asyik buat bakar semangat. Area kalkulator komposisi fisik sangat membantu saya melacak progres mingguan.",
+                date: "2 hari lalu",
+                avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=150"
+            }
+        ];
+
+        // Star Rating Selection
+        function setRating(rating) {
+            selectedRating = rating;
+            const stars = document.querySelectorAll('#starSelector button');
+            const displayVal = document.getElementById('ratingDisplayVal');
+
+            stars.forEach((star, index) => {
+                if (index < rating) {
+                    star.className = "text-xl text-brand-accent transition-colors focus:outline-none";
+                } else {
+                    star.className = "text-xl text-neutral-600 hover:text-brand-accent transition-colors focus:outline-none";
+                }
+            });
+
+            displayVal.innerText = `(${rating} dari 5 Bintang)`;
+        }
+
+        // Submit New Review Handler
+        function submitReview(event) {
+            event.preventDefault();
+            const name = document.getElementById('reviewerName').value.trim();
+            const text = document.getElementById('reviewerText').value.trim();
+
+            if (selectedRating === 0) {
+                showToast("Rating Belum Diisi", "Tolong berikan penilaian bintang untuk NETGYM.", false);
+                return;
+            }
+
+            // Create new dynamic review object
+            const newReview = {
+                id: Date.now(),
+                name: name,
+                rating: selectedRating,
+                text: text,
+                date: "Baru saja",
+                avatar: `https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=150` // Elegant generic fallback avatar
+            };
+
+            // Push to state array and re-render
+            mockReviews.unshift(newReview);
+            renderReviews();
+
+            // Reset Form State
+            document.getElementById('reviewForm').reset();
+            setRating(0);
+            document.getElementById('ratingDisplayVal').innerText = "(Pilih Rating)";
+
+            showToast("Ulasan Dikirim", "Terima kasih banyak atas feedback luar biasa Anda!");
+        }
+
+        // Render Reviews List
+        function renderReviews() {
+            const container = document.getElementById('reviewsContainer');
+            const countText = document.getElementById('reviewCountText');
+            
+            container.innerHTML = '';
+            countText.innerText = `${mockReviews.length} Ulasan Masuk`;
+
+            mockReviews.forEach(item => {
+                // Generate star elements
+                let starsHTML = '';
+                for (let i = 1; i <= 5; i++) {
+                    if (i <= item.rating) {
+                        starsHTML += `<i class="fa-solid fa-star text-brand-accent"></i>`;
+                    } else {
+                        starsHTML += `<i class="fa-solid fa-star text-neutral-700"></i>`;
+                    }
+                }
+
+                const card = document.createElement('div');
+                card.className = "bg-brand-darkGray/60 border border-white/5 p-6 rounded-2xl flex items-start space-x-4 hover:border-white/10 transition-colors";
+                card.innerHTML = `
+                    <div class="w-12 h-12 rounded-full overflow-hidden border border-brand-accent/20 flex-shrink-0">
+                        <img src="${item.avatar}" alt="${item.name}" class="object-cover w-full h-full" onerror="this.src='https://placehold.co/100x100/151c2c/ffffff?text=User'">
+                    </div>
+                    <div class="flex-grow space-y-2">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <h4 class="text-sm font-bold text-white uppercase">${item.name}</h4>
+                                <span class="text-[10px] text-brand-muted">${item.date}</span>
+                            </div>
+                            <div class="flex space-x-0.5 text-xs">
+                                ${starsHTML}
+                            </div>
+                        </div>
+                        <p class="text-xs text-brand-muted leading-relaxed italic">"${item.text}"</p>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        // Join Plan action (for CTA buttons)
+        function handleJoinPlan(planName) {
+            showToast("Bergabung dengan NETGYM", `Membuka pendaftaran Paket ${planName}... Silakan kunjungi meja admin untuk pemrosesan kartu anggota.`);
+        }
+
+        function handleNavigationAlert() {
+            showToast("Petunjuk Rute", "Menghubungkan ke layanan navigasi instan Maps...", true);
+        }
+
+        // Run functions immediately on system mount
+        window.onload = function() {
+            renderReviews();
+        }
+    </script>
+</body>
+</html>
